@@ -249,6 +249,9 @@ export const InitializeModal = ({ umi, candyMachine, candyGuard }: Props) => {
   const roots = new Map<string, string>();
 
   allowLists.forEach((value, key) => {
+    value.forEach((element, index, arr) => {
+      arr[index] = element.trim();
+    });
     //@ts-ignore
     const root = getMerkleRoot(value).toString("hex");
     if (!roots.has(key)) {
