@@ -272,6 +272,9 @@ export const routeBuilder = async (
 
   if (guardToUse.guards.allowList.__option === "Some") {
     const allowlist = allowLists.get(guardToUse.label);
+    allowlist?.forEach((element, index, arr) => {
+      arr[index] = element.trim();
+    });
     if (!allowlist) {
       console.error("allowlist not found!");
       return tx2;
